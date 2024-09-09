@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+
+    <!-- Include the Navbar -->
+    {% include 'navbar.html' %}
+
+    <div class="container">
+        <h2>Edit Profile</h2>
+        {% include 'notifications.html' %}
+        <form action="/profile" method="POST" enctype="multipart/form-data">
+            <!-- Profile Picture -->
+            <div>
+                <label for="profile_picture">Profile Picture:</label>
+                <img src="{{ session.get('profile_picture', '/static/images/default_pfp.svg') }}" alt="Profile Picture" class="profile-picture">
+                <input type="file" name="profile_picture" id="profile_picture">
+            </div>
+
+            <!-- Username -->
+            <div>
+                <label for="username">Username:</label>
+                <input type="text" name="username" value="{{ user['username'] }}" required>
+            </div>
+
+            <!-- Email -->
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" name="email" value="{{ user['email'] }}" required>
+            </div>
+
+            <!-- Password (Optional) -->
+            <div>
+                <label for="password">New Password (leave blank if not changing):</label>
+                <input type="password" name="password">
+            </div>
+
+            <button type="submit">Save Changes</button>
+        </form>
+    </div>
+
+</body>
+</html>

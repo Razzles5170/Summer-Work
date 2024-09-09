@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book a Table</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+
+
+    {%include 'notifications.html'%}
+    {% include 'navbar.html' %}
+
+    <div class="main-content">
+        <h1 class="main-heading">Book a Table</h1>
+
+        <div class="container">
+            <form action="/book" method="POST">
+                <label for="date">Select Date</label>
+                <input type="text" id="date" name="date" required>
+
+                <label for="time">Select Time</label>
+                <input type="text" id="time" name="time" required>
+
+                <label for="people">Number of People</label>
+                <input type="number" name="people" placeholder="Number of People" required min="1" max="25">
+
+                <button type="submit">Book Now</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<nav>
+    <div class="nav-wrapper">
+        <!-- Logo Link (aligned to the left) -->
+        <a href="/">
+            <img src="/static/images/logo.png" alt="Logo" class="logo">
+        </a>
+
+        <!-- Center the navigation links -->
+        <div class="nav-center">
+            <div class="nav-links">
+                <a href="/" class="nav-link">
+                    <div class="nav-content">
+                        <img src="/static/images/home.svg" alt="Home Icon" class="nav-icon">
+                        <span class="nav-text">Home</span>
+                    </div>
+                </a>
+                <a href="/menu" class="nav-link">
+                    <div class="nav-content">
+                        <img src="/static/images/menu.svg" alt="Menu Icon" class="nav-icon">
+                        <span class="nav-text">Menu</span>
+                    </div>
+                </a>
+                <a href="/book" class="nav-link">
+                    <div class="nav-content">
+                        <img src="/static/images/table.svg" alt="Table Icon" class="nav-icon">
+                        <span class="nav-text">Book</span>
+                    </div>
+                </a>                
+            </div>
+        </div>
+
+        <!-- Conditional Logic: Show profile picture if logged in, else show "Sign In" -->
+        {% if session.get('user_id') %}
+            <div class="profile-dropdown">
+                <img src="{{ session.get('profile_picture', '/static/images/default_pfp.svg') }}" alt="Profile Picture" class="profile-picture">
+                <div class="dropdown-menu">
+                    <a href="/profile" class="dropdown-link">Edit Profile</a>
+                    <a href="/logout" class="dropdown-link">Logout</a>
+                </div>
+            </div>
+        {% else %}
+            <!-- Show "Sign In" button if not logged in -->
+            <a href="/login" class="sign-in">
+                <div class="sign-in-content">
+                    Sign In
+                </div>
+            </a>
+        {% endif %}
+    </div>
+</nav>

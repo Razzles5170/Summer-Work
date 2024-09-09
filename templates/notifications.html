@@ -1,0 +1,16 @@
+<!-- Notification Popup -->
+<div class="notification-container">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="notification-popup {{ category }}">
+                    <div class="notification-content">
+                        <h3 class="notification-title">{{ category.capitalize() }}</h3>
+                        <p class="notification-text">{{ message }}</p>
+                    </div>
+                    <span class="close-btn" onclick="this.parentElement.style.display='none';">&times;</span>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+</div>
